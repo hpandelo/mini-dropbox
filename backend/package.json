@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "exports": {
+    "extension": "ts"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "4.17.1",
+    "ts-node": "^8.10.2",
+    "mongoose": "^5.9.16"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/mongoose": "^5.7.29",
+    "@types/node": "^14.0.14",
+    "eslint": "^7.4.0",
+    "eslint-plugin-import": "^2.22.0",
+    "open-cli": "^6.0.1",
+    "ts-node-dev": "^1.0.0-pre.50",
+    "typescript": "^3.9.6"
+  },
+  "scripts": {
+    "dev": "open-cli http://localhost:3001 && tsnd --respawn ./src/server.ts --watch 'src'",
+    "start": "node --inspect=3001 -r ts-node/register ./src/server.ts && open-cli http://localhost:3001"
+  }
+}
