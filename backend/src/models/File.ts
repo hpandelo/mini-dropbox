@@ -14,6 +14,8 @@ const schema: any = {
 
 const options: any = {
   timestamps: true,
+  toObject: { virtuals: true },
+  toJson: { virtuals: true },
 };
 
 export default model<FileInterface>("File", new Schema(schema, options));

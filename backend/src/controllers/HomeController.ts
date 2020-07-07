@@ -1,4 +1,14 @@
 import mongoose from "mongoose";
+import express from 'express';
+import SocketIO from 'socket.io';
+import { Server } from 'http';
+
+const app: express.Application = express();
+const io = SocketIO(new Server(app));
+const interceptor = (req: any, res: any, next: any) => {
+  req.io = io;
+  return next();
+};
 
 const root = (req: any, res: any) => {
     const mongooseState = 
@@ -33,4 +43,5 @@ const root = (req: any, res: any) => {
 
 export default {
   root,
+  interceptor,
 };

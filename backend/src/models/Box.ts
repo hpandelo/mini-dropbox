@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 import { BoxInterface } from "./types";
 
+const { ObjectId: fileType } = Schema.Types;
 const schema: any = {
   title: {
     type: String,
@@ -8,7 +9,7 @@ const schema: any = {
   },
   files: [
     { 
-      type: Schema.Types.ObjectId, 
+      type: fileType, 
       ref: "File" 
     }
   ],
