@@ -11,12 +11,12 @@ class BoxController {
     return res.send(box);
   }
 
-  async getAll(req: any, res: any) {    
+  async getAll(req: any, res: any) {
     const boxes: Array<BoxInterface> = await Box.find();
     return res.json(boxes);
   }
 
-  async get(req: any, res: any) {    
+  async get(req: any, res: any) {
     const id: string = req.params.id;
     const box: BoxInterface|null = await Box.findById(id).populate('files');
     return res.json(box);

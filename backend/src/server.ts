@@ -1,13 +1,18 @@
 import cors from 'cors';
 import express from 'express';
+import dotenv from 'dotenv';
 import { connect } from 'mongoose';
-import { MainRoutes, RoutesConstants } from './routes/MainRoutes'
+import { MainRoutes } from './routes/MainRoutes'
 import BoxRoutes from './routes/BoxRoutes';
 import FileRoutes from './routes/FileRoutes';
 import HomeController from './controllers/HomeController';
 
+dotenv.config();
+const ATLAS_URL: string = process.env.ATLAS_URL || '';
+const SERVER_PORT: string = process.env.SERVER_PORT || '3001';
+
 connect(
-  RoutesConstants.PRIVATE.MONGODB, { 
+  ATLAS_URL, { 
     useNewUrlParser: true,
     useUnifiedTopology: true, 
 });
@@ -22,6 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(MainRoutes, BoxRoutes, FileRoutes);
 
-app.listen(RoutesConstants.PRIVATE.SERVER_PORT, () => {
-  console.info("\n\n\tServer ready and listening @ port", RoutesConstants.PRIVATE.SERVER_PORT, "\n\n");
+app.listen(SERVER_PORT, () => {
+  console.info("\n\n\tServer ready and listening @ port", SERVER_PORT, "\n\n");
 });
